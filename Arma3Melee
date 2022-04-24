@@ -16,7 +16,7 @@ player switchMove "WBK_FISTS_ATTACK_1";
 private _tArr = (getPos player) nearEntities ["Man", 2];
 for "_i" from 0 to count(_tArr) do {
 
-  if(_tArr (select _i) isKindOf "man" && (player getRelDir _tArr(select _i) < 20 || (player getRelDir _tArr(select _i) >= (360-20)) || _tArr(select _i) != this) then {
+  if(_tArr (select _i) isKindOf "man" && (player getRelDir _tArr(select _i) < 20 || (player getRelDir _tArr(select _i) >= (360-20)) || _tArr(select _i) != this && (_tArr(select _i) distance player <= 1.2) then {
   
   _tArr(select _i) setDir (getDir player);
   _i = count(_tArr);
