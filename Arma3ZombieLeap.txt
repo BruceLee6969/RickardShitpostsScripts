@@ -20,7 +20,6 @@ player setAnimSpeedCoef 1;
 player switchMove "Star_Wars_KaaTirs_idle";
 }, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
 
-
 player addAction ["<t color='#FF000'>ATTACK</t>", {
 player allowDamage false;
 private _aArr = ["Star_Wars_KaaTirs_attack_2","Star_Wars_KaaTirs_attack_3","Star_Wars_KaaTirs_attack_4"];
@@ -34,7 +33,15 @@ player setAnimSpeedCoef 1;
 player switchMove "Star_Wars_KaaTirs_idle";
 }, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
 
+player addAction ["<t color='#FF000'>TAUNT</t>", {
+private _tc = time + 2;
+player switchMove "Star_Wars_KaaTirs_scream";
+waitUntil{time >= _tc};
+}, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
+
+
 --------- DEBUG STUFF ---------
+
 
 private _Vel = sqrt((_Vi*sin(getDir player)*(getCameraViewDirection player select 0))^2 + (_Vi*cos(getDir player)*(getCameraViewDirection player select 1))^2 + (_Vi*(getCameraViewDirection player select 2))^2);
 hintSilent format ["X: %1, Y: %2, Z: %3, Vel: %4",getCameraViewDirection player select 0, getCameraViewDirection player select 1, getCameraViewDirection player select 2, _Vel];
