@@ -19,6 +19,7 @@ player addAction ["<t color='#FF000'>ATTACK</t>", {
 private _aArr = ["Star_Wars_KaaTirs_attack_2","Star_Wars_KaaTirs_attack_3","Star_Wars_KaaTirs_attack_4"];
 player switchMove (_aArr select (random[0,0.5,2]));
 private _ta = time + 1.54;
+private _tb = time + 0.5;
 waitUntil{time >= _tb};
 player setVelocityModelSpace[0,2,0.1];
 waitUntil{time >= _ta};
