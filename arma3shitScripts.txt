@@ -5,7 +5,7 @@ player allowDamage false;
 player switchMove "Star_Wars_Kaatirs_idle";
 player addAction ["<t color='#FF000'>POUNCE</t>", {
 private _Vi = 10;
-player setVelocity[_Vi*sin(getDir player),_Vi*cos(getDir player), _Vi*sin(
+player setVelocity[_Vi*sin(getDir player)*(getCameraViewDirection player select 1),_Vi*cos(getDir player)*(getCameraViewDirection player select 2), _Vi*sin(
 getCameraViewDirection player select 2)];
 player setAnimSpeedCoef ((getAnimSpeedCoef player)/(1.136*13/8));
 player switchMove "Star_Wars_KaaTirs_attack_1";
