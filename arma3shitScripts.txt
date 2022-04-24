@@ -1,9 +1,8 @@
 ------------ ZOMBIE SCRIPT (WBK ANIMATIONS)--------------
 
-player switchMove "Star_Wars_Kaatirs_idle";
-
 if(!local this)exitWith{};
 player allowDamage false;
+player switchMove "Star_Wars_Kaatirs_idle";
 player addAction ["<t color='#FF000'>POUNCE</t>", {
 private _Vi = 10;
 player setVelocity[_Vi*sin(getDir player),_Vi*cos(getDir player),8];
