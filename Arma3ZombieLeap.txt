@@ -1,7 +1,7 @@
 ------------ ZOMBIE SCRIPT (WBK ANIMATIONS)--------------
 REQUIRED MOD(S): 
 https://steamcommunity.com/workshop/filedetails/?id=2291129343
-HOW TO USE: Apply to unit through initbox in 3den or Zeus
+HOW TO USE: Apply to player unit through initbox in 3den or Zeus
 
 
 if(!local this)exitWith{};
