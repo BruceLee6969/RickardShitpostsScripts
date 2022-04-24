@@ -17,7 +17,7 @@ hintSilent format ["Time scalar: %1", _dT];
 
 player setAnimSpeedCoef ((getAnimSpeedCoef player)*1.136/_dT);
 player switchMove "Star_Wars_KaaTirs_attack_1";
-private _tm = time + 13/8;
+private _tm = time + _dT;
 waitUntil{time >= _tm};
 player setAnimSpeedCoef 1;
 player switchMove "Star_Wars_KaaTirs_idle";
