@@ -1,0 +1,34 @@
+------------ ZOMBIE SCRIPT (WBK ANIMATIONS)--------------
+
+player switchMove "Star_Wars_Kaatirs_idle";
+
+if(!local this)exitWith{};
+player allowDamage false;
+player addAction ["<t color='#FF000'>POUNCE</t>", {
+private _pDir = getDir player;
+private _Vi = 10;
+player setVelocity[_Vi*sin(_pDir),_Vi*cos(_pDir),8];
+player setAnimSpeedCoef ((getAnimSpeedCoef player)/(1.136*13/8));
+player switchMove "Star_Wars_KaaTirs_attack_1";
+private _tm = time + 13/8;
+waitUntil{time >= _tm};
+player setAnimSpeedCoef 1;
+player switchMove "Star_Wars_KaaTirs_idle";
+}, [1], 6, false, true, "", "_target == player && isTouchinGround _target"];
+
+
+player addAction ["<t color='#FF000'>ATTACK</t>", {
+private _aArr = ["Star_Wars_KaaTirs_attack_2","Star_Wars_KaaTirs_attack_3","Star_Wars_KaaTirs_attack_4"];
+player switchMove (_aArr select (random[0,0.5,2]));
+private _ta = time + 1.54;
+waitUntil{time >= _tb};
+player setVelocityModelSpace[0,2,0.1];
+waitUntil{time >= _ta};
+player setAnimSpeedCoef 1;
+player switchMove "Star_Wars_KaaTirs_idle";
+}, [1], 6, false, true, "", "_target == player && isTouchinGround _target"];
+
+
+Star_Wars_KaaTirs_attack_1
+
+---------------------------------------------------------
