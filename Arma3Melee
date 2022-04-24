@@ -1,10 +1,24 @@
 ------- MELEE (WKB ANIMATIONS) -------
+IMPORTANT:
+It is mandatory to play "The Only Thing They Fear Is You" by Mick Gordon while using this.
 
-if(!local this)exitWith{};
+if(!local this) exitWith{};
 player allowDamage false;
-player addAction ["<t color='#FF000'>POUNCE</t>", {
+player addAction ["<t color='#FF000'>PUNCH</t>", {
 
-player switchMove "Star_Wars_KaaTirs_idle";
+//PERFORM MELEE ANIMATION
+player switchMove "WBK_FISTS_ATTACK_1";
 
+//FIND NEAREST TARGET WHO IS ALSO WITHIN RANGE AND INFRONT OF PLAYER
+private _tArr = (getPos player) nearesEntities 2;
+//USE WHILE-LOOP TO ITERATE THROUGH ARRAY, USE IF-STATEMENT AND BREAK LOOP IF TARGET IS FOUND INFRONT OF PLAYER
+for "_i" from 0 to count(_tArr) do {
+  if()then{};
+
+};
+
+//ROTATE TARGET TO FACE PLAYER
+
+//FORCE TARGETTED UNIT TO GET KNOCKED BACK AND DIE
 
 }, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
