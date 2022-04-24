@@ -34,11 +34,4 @@ player setAnimSpeedCoef 1;
 player switchMove "Star_Wars_KaaTirs_idle";
 }, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
 
-
-while{alive player} do {
-
-  hintSilent format ["X: %1, Y: %2, Z: %3",getCameraViewDirection player select 0, getCameraViewDirection player select 1, getCameraViewDirection player select 2];
-
-};
-
 ---------------------------------------------------------
