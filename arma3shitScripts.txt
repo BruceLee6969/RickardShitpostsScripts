@@ -5,6 +5,7 @@ player allowDamage false;
 player switchMove "Star_Wars_Kaatirs_idle";
 player addAction ["<t color='#FF000'>POUNCE</t>", {
 private _Vi = 10;
+hintSilent format ["X: %1, Y: %2, Z: %3",getCameraViewDirection player select 0, getCameraViewDirection player select 1, getCameraViewDirection player select 2];
 player setVelocity[_Vi*sin(getDir player)*(getCameraViewDirection player select 1),_Vi*cos(getDir player)*(getCameraViewDirection player select 2), _Vi*
 getCameraViewDirection player select 2];
 player setAnimSpeedCoef ((getAnimSpeedCoef player)/(1.136*13/8));
