@@ -1,1 +1,10 @@
 ------- MELEE (WKB ANIMATIONS) -------
+
+if(!local this)exitWith{};
+player allowDamage false;
+player addAction ["<t color='#FF000'>POUNCE</t>", {
+
+player switchMove "Star_Wars_KaaTirs_idle";
+
+
+}, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
