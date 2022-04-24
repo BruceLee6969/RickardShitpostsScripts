@@ -37,6 +37,7 @@ player addAction ["<t color='#FF000'>TAUNT</t>", {
 private _tc = time + 2;
 player switchMove "Star_Wars_KaaTirs_scream";
 waitUntil{time >= _tc};
+player switchMove "Star_Wars_KaaTirs_idle";
 }, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
 
 
