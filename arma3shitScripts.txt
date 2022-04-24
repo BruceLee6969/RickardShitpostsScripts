@@ -29,7 +29,7 @@ player switchMove "Star_Wars_KaaTirs_idle";
 
 while{alive player} do {
 
-  hintSilent format ["EyePos Z: %1", vectorDir player select 2];
+  hintSilent format ["X: %1, Y: %2, Z: %3",getCameraViewDirection player select 0, getCameraViewDirection player select 1, getCameraViewDirection player select 2];
 
 };
 
