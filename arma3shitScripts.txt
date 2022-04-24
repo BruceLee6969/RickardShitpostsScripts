@@ -12,7 +12,7 @@ private _tm = time + 13/8;
 waitUntil{time >= _tm};
 player setAnimSpeedCoef 1;
 player switchMove "Star_Wars_KaaTirs_idle";
-}, [1], 6, false, true, "", "_target == player && isTouchinGround _target"];
+}, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
 
 
 player addAction ["<t color='#FF000'>ATTACK</t>", {
@@ -24,9 +24,6 @@ player setVelocityModelSpace[0,2,0.1];
 waitUntil{time >= _ta};
 player setAnimSpeedCoef 1;
 player switchMove "Star_Wars_KaaTirs_idle";
-}, [1], 6, false, true, "", "_target == player && isTouchinGround _target"];
-
-
-Star_Wars_KaaTirs_attack_1
+}, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
 
 ---------------------------------------------------------
