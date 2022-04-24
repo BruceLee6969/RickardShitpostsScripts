@@ -15,7 +15,7 @@ player setVelocity[_Vi*(getCameraViewDirection player select 0),_Vi*(getCameraVi
 private _dT = ((_Vi^2)*2*((getCameraViewDirection player select 2)))/(9.80665*_Vi);
 hintSilent format ["Time scalar: %1", _dT];
 
-player setAnimSpeedCoef ((getAnimSpeedCoef player)*(1.136*_dT));
+player setAnimSpeedCoef ((getAnimSpeedCoef player)*_dT)/1.136);
 player switchMove "Star_Wars_KaaTirs_attack_1";
 private _tm = time + 13/8;
 waitUntil{time >= _tm};
