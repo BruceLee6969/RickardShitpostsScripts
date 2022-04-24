@@ -9,10 +9,10 @@ player allowDamage false;
 player switchMove "Star_Wars_Kaatirs_idle";
 player addAction ["<t color='#FF000'>POUNCE</t>", {
 player allowDamage false;
-private _Vi = 20;
+private _Vi = 12;
 private _Vel = sqrt((_Vi*sin(getDir player)*(getCameraViewDirection player select 0))^2 + (_Vi*cos(getDir player)*(getCameraViewDirection player select 1))^2 + (_Vi*(getCameraViewDirection player select 2))^2);
 hintSilent format ["X: %1, Y: %2, Z: %3, Vel: %4",getCameraViewDirection player select 0, getCameraViewDirection player select 1, getCameraViewDirection player select 2, _Vel];
-player setVelocity[_Vi*(getCameraViewDirection player select 0),_Vi*(getCameraViewDirection player select 1), _Vi*(getCameraViewDirection player select 2)];
+player setVelocity[_Vi*(getCameraViewDirection player select 0),_Vi*(getCameraViewDirection player select 1), _Vi*(getCameraViewDirection player select 2)+0.0872];
 player setAnimSpeedCoef ((getAnimSpeedCoef player)/(1.136*13/8));
 player switchMove "Star_Wars_KaaTirs_attack_1";
 private _tm = time + 13/8;
