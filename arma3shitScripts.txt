@@ -26,4 +26,12 @@ player setAnimSpeedCoef 1;
 player switchMove "Star_Wars_KaaTirs_idle";
 }, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
 
+
+while(alive player) do {
+
+  hintSilent format ["EyePos Z: %1", eyeDirection player select 2];
+  sleep 2;
+
+};
+
 ---------------------------------------------------------
