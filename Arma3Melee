@@ -20,7 +20,7 @@ if(count _tArr > 1) then {
   comment("<= 1 means there is no one else to punch but oneself");
   for "_i" from 0 to count(_tArr) do {
   private _k = _tArr select _i;
-   if(_tArr select _i isKindOf "man" && (player getRelDir (getPos _k) <= 20 || player getRelDir (getPos _k) >= (360-20)) && _tArr select "_i" != this && (_tArr select _i distance player <= 1.2)) then {
+   if((player getRelDir (getPos _k) <= 20 || player getRelDir (getPos _k) >= (360-20)) && _tArr select "_i" != this && (_tArr select _i distance player <= 1.2)) then {
     _tArr select _i setDir (getDir player);
     _i = count(_tArr);
   
