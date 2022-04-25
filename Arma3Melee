@@ -25,4 +25,4 @@ for "_i" from 0 to count(_tArr) do {
 
 };
 
-}, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
+}, [1], 6, false, true, "", "_target == player"];
