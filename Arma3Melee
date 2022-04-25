@@ -16,7 +16,7 @@ player switchMove "WBK_FISTS_ATTACK_1";
 private _tArr = (getPos player) nearEntities ["Man", 2];
 
 if(count _tArr > 1) then {
-  comment("Because <= 1 means there is no one else to punch but themselves");
+  comment("<= 1 means there is no one else to punch but oneself");
   for "_i" from 0 to count(_tArr) do {
   private _k = _tArr select _i;
    if(_tArr select _i isKindOf "man" && (player getRelDir (getPos _k) <= 20 || player getRelDir (getPos _k) >= (360-20)) && _tArr select "_i" != this && (_tArr select _i distance player <= 1.2)) then {
@@ -26,5 +26,6 @@ if(count _tArr > 1) then {
   };
 
 };};
+player switchMove "";
 
 }, [1], 6, false, true, "", "_target == player"];
