@@ -21,7 +21,7 @@ for "_i" from 0 to count(_tArr) do {
   _tArr select _i setDir (getDir player);
   _i = count(_tArr);
   
-  }
+  };
 
 };
 
