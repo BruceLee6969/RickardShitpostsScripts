@@ -3,6 +3,7 @@ REQUIRED MOD(S):
 https://steamcommunity.com/workshop/filedetails/?id=2291129343
 HOW TO USE: Apply to player unit through initbox in 3den or Zeus, multiplayer version will be found further down
 
+------------ (LOCAL HOST VERSION) --------------
 
 if(!local this)exitWith{};
 player allowDamage false;
@@ -40,8 +41,7 @@ waitUntil{time >= _tc};
 player switchMove "Star_Wars_KaaTirs_idle";
 }, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
 
-
------------- ZOMBIE SCRIPT (MULTIPLAYER VERSION) --------------
+------------ MULTIPLAYER VERSION --------------
 
 if(!local this)exitWith{};
 _this allowDamage false;
@@ -79,7 +79,9 @@ waitUntil{diag_tickTime >= _tc};
 player switchMove "Star_Wars_KaaTirs_idle";
 }, [1], 6, false, true, "", "_target == player && isTouchingGround _target"];
 
----------------------------------------------------------------
+
+-----------------------------------------------
+
 
 --------- DEBUG STUFF ---------
 
