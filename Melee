@@ -5,7 +5,7 @@ IMPORTANT:
 //PERFORM MELEE ANIMATION                                                                                   [X]
 //FIND NEAREST TARGET WHO IS ALSO WITHIN RANGE AND INFRONT OF PLAYER                                        [X]
 //USE LOOP TO ITERATE THROUGH ARRAY, USE IF-STATEMENT AND BREAK WHEN A TARGET IS FOUND INFRONT OF PLAYER    [ ] (ONE CONDITION IS POPO)
-//ROTATE TARGETED UNIT TO FACE PLAYER                                                                       [ ]
+//ROTATE TARGETED UNIT TO FACE PLAYER                                                                       [X]
 //FORCE KNOCKBACK ANIMATION ON TARGETED UNIT                                                                [ ]
 //FORCE TARGETTED UNIT TO GET KNOCKED BACK AND DIE                                                          [ ]
 
