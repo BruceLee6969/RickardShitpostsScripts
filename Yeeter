@@ -12,7 +12,8 @@ if(count _pArr > 1) then {
    if((player getRelDir (getPos _k) <= 20 || player getRelDir (getPos _k) >= (360-20)) && _pArr select "_i" != this && (_pArr select _i distance player <= 1.2)) then {
    _i = count(_pArr);
    
-   player switchMove " ... " //INSERT THROW ANIMATION
+   player switchMove " ... "; //INSERT THROW ANIMATION
+   _k switchMove " ... ";
    
    _k attachTo [player, [0,0,0],"righthand", true];
    private _t = diag_tickTime + _animTime; //INSERT DURATION OF THROW ANIMATION
@@ -24,9 +25,8 @@ if(count _pArr > 1) then {
 
 } else {
 
-player switchMove " ... " //INSERT THROW ANIMATION AND DO NOTHING ELSE
+player switchMove " ... "; //INSERT THROW ANIMATION AND DO NOTHING ELSE
 
 };};
-player switchMove "";
 
 }, [1], 6, false, true, "", "_target == player"];
