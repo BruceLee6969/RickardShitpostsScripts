@@ -3,23 +3,28 @@ if(!local this) exitWith{};
 player allowDamage false;
 player addAction ["<t color='#FF000'>PUNCH</t>", {
 
-player switchMove "WBK_FISTS_ATTACK_1";
 private _pArr = (getPos player) nearEntities ["Man", 2];
+   private _Vi = 100;
 
 if(count _pArr > 1) then {
   for "_i" from 0 to count(_tArr) do {
-  private _k = _tArr select _i;
+  private _k = _pArr select _i;
    if((player getRelDir (getPos _k) <= 20 || player getRelDir (getPos _k) >= (360-20)) && _pArr select "_i" != this && (_pArr select _i distance player <= 1.2)) then {
    _i = count(_pArr);
-   player switchMove " ... " //INSERT THROW ANIMATION
-   _pArr select _i attachTo [player, [0,0,0],"righthand", true];
-   private _t = diag_tickTime + _animTime;
-   waitUntil{serverTime >= _t};
-   detach _pArr select _i;
    
-   //GET EYE DIRECTION AND SHIT THE PLAYER IS LOOKING AND SETVELOCITY TO UNIT
+   player switchMove " ... " //INSERT THROW ANIMATION
+   
+   _k attachTo [player, [0,0,0],"righthand", true];
+   private _t = diag_tickTime + _animTime; //INSERT DURATION OF THROW ANIMATION
+   waitUntil{serverTime >= _t};
+   detach _k;
+   _k setVelocity[_Vi*(getCameraViewDirection player select 0),_Vi*(getCameraViewDirection player select 1), _Vi*abs(((getCameraViewDirection player select 2)+0.1745))];
   
   };
+
+} else {
+
+player switchMove " ... " //INSERT THROW ANIMATION AND DO NOTHING ELSE
 
 };};
 player switchMove "";
