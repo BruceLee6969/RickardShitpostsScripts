@@ -19,7 +19,7 @@ if(count _pArr > 1) then {
    private _t = diag_tickTime + _animTime; //INSERT DURATION OF THROW ANIMATION
    waitUntil{serverTime >= _t};
    detach _k;
-   _k setVelocity[_Vi*((direction player*180/pi)-getCameraViewDirection player select 0),_Vi*((direction player*180/pi)-getCameraViewDirection player select 1), _Vi*abs(((getCameraViewDirection player select 2)+0.1745))];
+   _k setVelocity[_Vi*((direction player*180/pi)-getCameraViewDirection player select 0),_Vi*((direction player*180/pi)-getCameraViewDirection player select 1), _Vi*abs(((getCameraViewDirection player select 2)))];
   
   };
 
