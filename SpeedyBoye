@@ -1,0 +1,248 @@
+_k = 0;
+player addAction ["<t color='#FF0000'>DETONATE</t>", {
+
+}, "", -1, false, true,"", "_this == _target"];
+
+
+
+for [{ _i = 0 }, { _i < 1000 }, { _i = _i + 1}] do { 
+car setVelocityModelSpace [0, 0, _k]; 
+_k = exp(0.01 * _i)-1;}; 
+
+
+
+----- FOR THE EDITOR -----
+this addAction ["<t color='#FFFF00'>VODKA BOOSTER</t>",{   
+_k = speed car/3.6; 
+_tempSpeed = speed car/3.6;
+   
+for [{ _i = 0 }, { _i < 100 }, { _i = _i + 0.00008}] do {    
+car setVelocityModelSpace [0, _k, 0];    
+_k = _tempSpeed + exp(0.1 * _i)-1;}; 
+ 
+},[1],0,false,true,"","driver  _target == _this"]; 
+this allowDamage false;
+
+this setPlateNumber "GUERRILLA SPACE BOYES";
+
+
+
+----- EXPERIMENTAL ----- 
+player addAction ["<t color='#FFFF00'>OUT OF HERE</t>",{ 
+_k = speed player/3.6; 
+_tempSpeed = speed player/3.6;
+
+for [{ _p = 0 }, { _p < 100 }, { _p = _p + 0.01}] do { 
+player setVelocityModelSpace [0, 0, _k]; 
+_k = _tempSpeed - exp(0.1*_p)-1;
+_tempSpeed = 0; 
+};
+
+for [{ _i = 0 }, { _i < 200 }, { _i = _i + 0.0001}] do { 
+player setVelocityModelSpace [0, _k, 0]; 
+_k = _tempSpeed + exp(0.01*_i)-1;
+_tempSpeed = 0;
+}; 
+
+},[1],0,false,true,"","_target == player"];
+player allowDamage false;
+
+
+----- EXPERIMENTAL 2 ----- 
+player addAction ["<t color='#FFFF00'>GROUND POUND</t>",{ 
+_k = speed player/3.6;
+_tempSpeed = speed player/3.6;
+
+for [{ _p = 0 }, { _p < 25 }, { _p = _p + 0.001}] do { 
+player setVelocityModelSpace [0, 0, _k]; 
+_k = _tempSpeed + exp(0.1*_p)-1;
+_tempSpeed = 0;
+};
+_k = 0;
+
+
+------------------------------
+
+this addAction ["<t color='#FFFF00'>YEET</t>",{   
+this setVelocityModelSpace [0, 0, 10000];    
+},[1],0,false,true,"","_target == player"];
+
+
+
+
+
+-------------------------------
+
+player allowDamage false; 
+ 
+this addAction ["<t color='#FFFF00'>OMAEWA MOU..</t>",{   
+
+_k = 0;
+ 
+for[{_i = 0},{_i < 200},{_i = _i + 0.01}] do {
+player setVelocityModelSpace [0, 0, _k];  
+_k = exp(0.01*_i)-1; 
+}; 
+ 
+for[{_i = 0},{_i < 30000},{_i = _i + 0.01}] do {
+_k = 3*sin(_i*0.3); 
+player setVelocityModelSpace[0,0,_k]; 
+};
+ 
+},[1],0,false,true,""," driver  _target == _this"];
+
+-------------------------------
+
+
+this addAction ["<t color='#FFFF00'>SQUAT</t>",{
+_squatBoyeEnd = time + 10.033;
+_getUpEnd = _squatBoyeEnd + 5.466;
+this playMove "Acts_Executioner_Squat";
+waitUntil{time >= _squatBoyeEnd};
+this playMoveNow "Acts_Executioner_Squat_End";
+waitUntil{time >= _getUpEnd};
+this playMoveNow "Acts_Executioner_ToPistol";
+},[1],0,false,true,"","_target == player"];
+
+
+-------------------------------
+player allowDamage false; 
+  
+this addAction ["<t color='#FFFF00'>OMAEWA MOU..</t>",{    
+ 
+_k = 100;
+_i = 0;
+_peakVel = 60;
+_ampl = 3; 
+_peakIteration = 1; 
+_peak = abs((_ampl-(-_ampl))/2);
+
+player switchMove "Acts_AidlPercMstpSnonWnonDnon_warmup_8_loop";
+for[{_i = 0},{_i <= 1200},{_i = _i + 0.1}] do { 
+player setVelocityModelSpace [0, 0, _k];   
+_k = -_peakVel*exp(-0.01*_i)+_peakVel;
+};
+
+while{_peakIteration < 10} do { 
+_k = _ampl*sin(_i*0.05); 
+player setVelocityModelSpace[0,0,_k]; 
+if(_k == _ampl) then { 
+ _peakIteration = _peakIteration + 1; 
+}; 
+
+_i=_i+0.1; 
+};
+
+
+while {!isTouchingGround player} do { 
+player setVelocityModelSpace [0, 105, -100]; 
+};
+player switchMove "Acts_EpicSplit_out";
+for '_i' from 1 to 10 do {'Bo_GBU12_LGB' createVehicle position player;};
+
+},[1],0,false,true,""," driver  _target == _this"];
+
+-------------------------------
+
+
+
+
+
+
+
+
+----- FOR ZEUS -----
+this addAction ["<t color='#FFFF00'>VODKA BOOSTER</t>",{
+_k = speed this/3.6;
+_tempSpeed = speed this/3.6;
+for [{ _i = 0 }, { _i < 93 }, { _i = _i + 0.0001}] do {
+this setVelocityModelSpace [0, _k, 0];
+_k = _tempSpeed + exp(0.1*_i)-1;
+_tempSpeed = 0;
+};
+},[1],0,false,true,""," driver  _target == _this"];
+this setPlateNumber "SPEEDY BOY";
+
+
+
+
+
+
+
+
+this addAction ["<t color='#FFFF00'>OMAEWA MOU..</t>",{    
+_k = 0; 
+_i = 0;
+_ampl = 4; 
+_peakIteration = 1; 
+_peak = abs((_ampl-(-_ampl))/2);
+this allowDamage false;
+this switchMove "Acts_AidlPercMstpSnonWnonDnon_warmup_8_loop";
+for[{_i = 0},{_i < 380},{_i = _i + 0.01}] do { 
+
+
+this setVelocityModelSpace [0, 0, _k];   
+_k = -0.5exp(0.05*_i)+20;
+
+
+};
+while{_peakIteration < 20} do { 
+_k = _ampl*sin(_i*0.05); 
+this setVelocityModelSpace[0,0,_k]; 
+if(_k == _ampl) then { 
+ _peakIteration = _peakIteration + 1; 
+}; 
+_i=_i+0.1; 
+};
+while {!isTouchingGround this} do { 
+this setVelocityModelSpace [0, 120, -100]; 
+};
+this switchMove "Acts_EpicSplit_out";
+for '_i' from 1 to 5 do {'Bo_GBU12_LGB' createVehicle position this;};
+this allowDamage true;
+
+},[1],0,false,true,""," driver  _target == _this"];
+
+
+--------------------------------------
+
+
+this addAction ["<t color='#FFFF00'>VODKA BOOSTER</t>",{    
+_k = speed car/3.6;  
+_tempSpeed = speed car/3.6;
+
+_b = "ammo_Missile_s750" createVehicle position car;   
+_b attachTo [car, [-0.05, -1, -0.35]]; 
+_b setVectorDirAndUp [[0, 1, 0], [0, 0, 1]];
+    
+for [{ _i = 0 }, { _i < 70 }, { _i = _i + 0.00008}] do {     
+car setVelocityModelSpace [0, _k, 0];     
+_k = _tempSpeed + exp(0.1 * _i)-1;};
+  
+},[1],0,false,true,""," driver  _target == _this"];  
+
+this allowDamage false; 
+this setPlateNumber "GUERRILLA SPACE BOYES";
+
+
+
+-------------------------------------
+
+this addAction ["<t color='#FFFF00'>VODKA BOOSTER</t>",{    
+_k = speed car/3.6;  
+_tempSpeed = speed car/3.6;
+_tboye = time+35;
+    
+for [{ _i = 0 }, { _i < 100 }, { _i = _i + 0.00001}] do {     
+car setVelocityModelSpace [0, _k, 0];     
+_k = _tempSpeed + exp(0.1 * _i)-1;};  
+
+if(time==_tboye) then {
+_b = "ammo_Missile_s750" createVehicle position car;   
+_b attachTo [car, [-0.05, -1, -0.35]]; 
+_b setVectorDirAndUp [[0, 1, 0], [0, 0, 1]];
+}
+  
+},[1],0,false,true,""," driver  _target == _this"];  
+this allowDamage false; 
+this setPlateNumber "GUERRILLA SPACE BOYES";
