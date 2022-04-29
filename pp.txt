@@ -1,0 +1,206 @@
+this addAction ["<t color='#FFFF00'>YEET</t>",{
+
+_target = <TARGET NAME HERE>;
+
+_unit = player;
+_b = "IEDLandBig_Remote_Ammo" createVehicle position _unit;  
+_b attachTo [_unit, [0, 0.15, 0.15], "Pelvis"];
+_b setVectorDirAndUp [[1, 0, 0], [0, 1, 0]];
+_pPosX = 0;
+_pPosY = 0;
+_pPosZ = 0;
+_tPosX = 0;
+_tPosY = 0;
+_tPosZ = 0;
+_errX = 0;
+_errY = 0;
+_errZ = 0;
+_Kp = 4.5;
+_vel = 100;
+while{_unit distance _target > 20} do {
+_pPosX = getPos _unit select 0;
+_tPosX = getPos _target select 0;
+_pPosY = getPos _unit select 1;
+_tPosY = getPos _target select 1;
+_pPosZ = getPos _unit select 2;
+_tPosZ = getPos _target select 2;
+_errX = _Kp*_tPosX - _Kp*_pPosX;
+_errY = _Kp*_tPosY - _Kp*_pPosY;
+_errZ = _Kp*_tPosZ - _Kp*_pPosZ;
+_Kp = _Kp + 0.0005;
+_unit setVelocity[_vel + _errX,_vel + _errY,_errZ];
+};
+_b setDamage 1;
+_unit removeAction 0;
+},[1],0,false,true,""," driver  _target == _this"];
+
+
+-----------------------------------------------------
+
+
+this addAction ["<t color='#FFFF00'>YEET</t>",{
+_unit = player;
+_yeetTime = diag_tickTime;
+_unit allowDamage false;
+while{diag_tickTime <= _yeetTime+1.166} do{
+_unit playMove "AwopPercMstpSgthWnonDnon_start";
+_unit playMoveNow "AwopPercMstpSgthWnonDnon_throw";
+_unit playMoveNow "AwopPercMstpSgthWnonDnon_end";};
+_boyeTime = time + 20;
+_boye = "O_MBT_02_cannon_F" createVehicle position _unit;
+[_unit, _boye] remoteExecCall ["disableCollisionWith", 0, _unit];
+_boye attachTo [_unit, [0.4,0,3], "hlava"];
+_boye setVectorDirAndUp [[0, 1, 0], [0, 0, 1]];
+detach _boye;
+_boye setVelocityModelSpace[0, 800,0.5];
+waitUntil{time >= _boyeTime};
+deleteVehicle _boye;
+},[1],0,false,true,""," driver _target == _this"];
+
+
+
+-----------------------------------------------------
+
+
+this addAction ["<t color='#FF0000'>YEET</t>",{
+_unit = player;
+_yeetTime = diag_tickTime;
+_unit allowDamage false;
+while{diag_tickTime <= _yeetTime+1.166} do{
+_unit playMove "AwopPercMstpSgthWnonDnon_start";
+_unit playMoveNow "AwopPercMstpSgthWnonDnon_throw";
+_unit playMoveNow "AwopPercMstpSgthWnonDnon_end";};
+_boyeTime = time + 20;
+_boye = "M_Vorona_HEAT" createVehicle position _unit;
+[_unit, _boye] remoteExecCall ["disableCollisionWith", 0, _unit];
+_boye attachTo [_unit, [0.4,0,1.8], "hlava"];
+_boye setVectorDirAndUp [[0, 1, 0], [0, 0, 1]];
+detach _boye;
+_boye setVelocityModelSpace[0, 800,0.5];
+waitUntil{time >= _boyeTime};
+deleteVehicle _boye;
+},[1],0,false,true,""," driver _target == _this"];
+
+----------------------------------------------------
+
+player setAnimSpeedCoef 2;
+player allowDamage false;
+this addAction ["<t color='#FFFF00'>LONG JUMP</t>",{   
+_k = 0;  
+_i = 0; 
+ 
+for[{_i = 0},{_i < 380},{_i = _i + 0.01}] do {  
+player setVelocityModelSpace [0, 0, _k];    
+_k = -0.5*exp(0.05*_i)+20; 
+_i=_i+0.1;  
+}; 
+ 
+player setVelocityModelSpace [0, 1000, 20];  
+
+},[1],0,false,true,""," driver  _target == _this"];
+
+
+----------------------------------------------------
+
+this addAction ["<t color='#FF0000'>YEET</t>",{ 
+_unit = player; 
+_yeetTime = diag_tickTime;
+_vel = 500;
+_eyePosX = eyePos _unit select 0;
+_eyePosY = eyePos _unit select 1;
+_eyeposZ = eyePos _unit select 2;
+_pPosX = _unit select 0;
+_pPosY = _unit select 1;
+_pPosZ = _unit select 2;
+_altDif = _eyeposZ-_pPosZ;
+hint format ["X: %1. Y: %2. Z: %3", _eyePosX, _eyePosY, _eyePosZ];
+
+while{diag_tickTime <= _yeetTime+1.166} do{ 
+_unit playMove "AwopPercMstpSgthWnonDnon_start"; 
+_unit playMoveNow "AwopPercMstpSgthWnonDnon_throw"; 
+_unit playMoveNow "AwopPercMstpSgthWnonDnon_end";}; 
+
+_boyeTime = time + 20; 
+_boye = "Bomb_03_F" createVehicle position _unit; 
+
+
+[_unit, _boye] remoteExecCall ["disableCollisionWith", 0, _unit]; 
+_boye attachTo [_unit, [0.4,0,2], "head"];
+
+
+_boye setVectorDirAndUp [[0, 1, 0], [0, 0, 1]]; 
+detach _boye; 
+
+
+
+_boye setVelocityModelSpace[0, 250,-10]; 
+
+
+
+waitUntil{time >= _boyeTime}; 
+deleteVehicle _boye; 
+},[1],0,false,true,""," driver _target == _this"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------
+
+
+player allowDamage false;
+
+this addAction ["<t color='#FFFF00'>OMAEWA MOU..</t>",{
+
+_unit = player;
+_target = target;
+_tPos = 0;
+_pPos = 0;
+_vel = 50;
+_t = 0;
+_KpX = 1;
+_KpY = 1;
+_KpZ = 1;
+_posX = 0;
+_posY = 0;
+_posZ = 0;
+_tPosX = 0;
+_tPosY = 0;
+_tPosZ = 0;
+_errX = 0;
+_errY = 0;
+_errZ = 0;
+
+while{_unit distance _target > 3} do {
+
+_posX = getPos _unit select 0;
+_posY = getPos _unit select 1;
+_posZ = getPos _unit select 2;
+
+_tPosX = getPos _target select 0;
+_tPosY = getPos _target select 1;
+_tPosZ = getPos _target select 2;
+
+errX = _KpX * (_tPosX - _posX);
+errY = _KpY * (_tPosX - _posX);
+errZ = _KpZ * (_tPosX - _posX);
+
+_unit setVelocity[_errX * _KpX,_errY * _KpY, _errZ * _KpZ];
+
+_tPos = getPos _target;
+_pPos = getPos _unit;
+}
+
+},[1],0,false,true,""," driver  _target == _this"];
