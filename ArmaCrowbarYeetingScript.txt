@@ -1,0 +1,101 @@
+if (!local player) exitWith {};
+player addAction ["<t color='#FFFF00'>yeet2</t>",{
+
+_pEyePos = screenToWorld[0.5,0.5];
+_pPos = getPos player;
+
+_pEX = _pEyePos select 0;
+_pPX = _pPos select 0;
+_pEY = _pEyePos select 1;
+_pPY = _pPos select 1;
+_pEZ = getTerrainHeightASL [_pEX, _pEY];
+_pPZ = getTerrainHeightASL (position player);
+_x = _pEX-_pPX;
+_y = _pEY-_pPY;
+_z = _pEZ-(_pPZ+1);
+_r = sqrt(_x^2+_y^2 + _z^2);
+_v = 500;
+_g = 9.80665;
+_k = 0;
+
+player enableSimulation false;
+player playMove "AwopPercMstpSgthWnonDnon_start";
+player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
+player playMoveNow "AwopPercMstpSgthWnonDnon_end";
+sleep 1.166;
+
+_ang = atan(((_v^2 - sqrt(_v^4 - _g*(_g*_y^2 - 2*_z*_v^2)))/(_g*_y)));
+_vY = _v * cos(_ang);
+_vZ = _v * sin(_ang);
+
+_b = 'Land_Crowbar_01_F' createVehicle position player; 
+player disableCollisionWith _b;
+_b attachTo [player, [1, 0, 1], 'Pelvis'];
+detach _b;
+player enableSimulation true;
+
+while{true}{
+_b setVelocityModelSpace [0, _vY, _vZ];
+a setVectorDirAndUp [[0, sin(_k-sqrt(2)), cos(_k)], [1, 0, 1]];
+_k = _k + 0.01;
+};
+
+hintSilent format ["Y: %1,Z: %2, R: %3", _y, _z, _r];
+sleep 5;
+hintSilent format ["VEL_Y: %1, VEL_Z: %2, ANGLE: %3°",_vY,_vZ,_ang];
+
+},[1],0,false,true,"","_target == player"];
+
+
+
+
+this addAction ["<t color='#FFFF00'>spin</t>",{  
+_k = 0;  
+player enableSimulation false; 
+player playMove "AwopPercMstpSgthWnonDnon_start"; 
+player playMoveNow "AwopPercMstpSgthWnonDnon_throw";  
+player playMoveNow "AwopPercMstpSgthWnonDnon_end"; 
+player enableSimulation true; 
+a setVelocity [0, 10, 0.1]; 
+player disableCollisionWith a;
+while {true} do { 
+a setVectorDirAndUp [[0, sin(_k-1), cos(_k+1)], [1, 0, 1]]; 
+_k = _k + 0.001;
+if (_k >= 10000) then {
+_k = 0;
+};};  
+},[1],0,false,true,"","_target == player"];
+
+
+
+
+this addAction ["<t color='#FFFF00'>spin</t>",{   
+_k = 0;   
+player enableSimulation false;  
+player playMove "AwopPercMstpSgthWnonDnon_start";  
+player playMoveNow "AwopPercMstpSgthWnonDnon_throw";   
+player disableCollisionWith a;  
+player playMoveNow "AwopPercMstpSgthWnonDnon_end";  
+player enableSimulation true;  
+a setVelocity [0, 10, 0.1];  
+while {true} do {  
+a setVectorDirAndUp [[0, sin(_k-1), cos(_k+1)], [1, 0, 1]];  
+_k = _k + 0.001; 
+if (_k >= 10000) then { 
+_k = 0; 
+};};   
+},[1],0,false,true,"","_target == player"];
+
+
+
+
+_this addAction ["E",{   
+
+_this enableSimulation false;
+
+},[1],0,false,true,"","_target == player"];
+
+
+
+
+
