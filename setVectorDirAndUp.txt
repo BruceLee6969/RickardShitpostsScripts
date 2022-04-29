@@ -1,0 +1,59 @@
+hull setVectorDirAndUp [[0,-1,0],[0,0,1]];
+turret attachTo[car, [0.75,2.3,0.15]];
+turret setVectorDirAndUp [[0.5,0.8,-0.3],[0,-0.1,1]];
+
+
+if (!local this) exitWith {};
+private _hull = "Land_Wreck_T72_hull_F" createVehicle position this;
+private _turret = "Land_Wreck_T72_turret_F" createVehicle position this;
+_hull attachTo [this];
+_hull setVectorDirAndUp [[0,-1,0],[0,0,1]];
+_turret attachTo[car, [0.75,2.3,0.15]]; 
+_turret setVectorDirAndUp [[0.5,0.8,-0.3],[0,-0.1,1]];
+
+
+
+if (!local this) exitWith {};
+private _hull = "Land_Wreck_T72_hull_F" createVehicle position this;
+private _turret = "Land_Wreck_T72_turret_F" createVehicle position this;
+_hull attachTo [this, [0.7,0,-0.7]];
+_hull setVectorDirAndUp [[0,-1,0],[0,0,1]];
+_turret attachTo[this, [0.75,2.3,0.17]]; 
+_turret setVectorDirAndUp [[0.5,0.8,-0.3],[0,-0.1,1]];
+
+
+
+
+--- T-72 WITH COMMANDER TURRET ---
+
+
+if (!local this) exitWith {};
+private _hull = "Land_Wreck_T72_hull_F" createVehicle position _this;
+private _turret = "Land_Wreck_T72_turret_F" createVehicle position _this;
+private _comTurret = "O_G_HMG_02_F" createVehicle position _this;
+_comTurret disableCollisionWith _this;
+_comTurret attachTo[this, [0.9,0.25,1.58]];
+_hull attachTo [this, [0.7,-0.4,-0.7]];
+_hull setVectorDirAndUp [[0,-1,0],[0,0,1]];
+_turret attachTo[this, [0.75,1.9,0.16]]; 
+_turret setVectorDirAndUp [[0.5,0.8,-0.3],[0,-0.1,1]];
+
+
+--- T-72 WITH T-100 TURRET --- 
+
+
+if (!local this) exitWith {};
+private _hull = "Land_Wreck_T72_hull_F" createVehicle position _this;
+private _turret = "O_MBT_02_cannon_F" createVehicle position _this;
+_turret disableCollisionWith _this;
+_turret attachTo[this, [-0.1,0.8,0.54]];
+_turret setObjectScale 0.85;
+_hull attachTo [_this, [0.7,-0.4,-0.7]];
+_hull setVectorDirAndUp [[0,-1,0],[0,0,1]];
+
+
+
+if (!local this) exitWith {};
+private _hull = "Land_Wreck_T72_hull_F" createVehicle position _this;
+_hull attachTo [_this, [0.7,-0.4,-0.7]];
+_hull setVectorDirAndUp [[0,-1,0],[0,0,1]];
