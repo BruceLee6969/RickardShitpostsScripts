@@ -1,0 +1,55 @@
+this allowDamage false;
+
+this addAction ["<t color='#FFFF00'>CALL OBJECT</t>",{
+
+_obj = obj;
+_unit = player;
+
+[_obj, _unit] remoteExecCall ["disableCollisionWith", 0, _unit];
+
+_pPosX = 0;
+_pPosY = 0;
+_pPosZ = 0;
+_tPosX = 0;
+_tPosY = 0;
+_tPosZ = 0;
+_yeetPosX = 0;
+_yeetPosY = 0;
+_yeetPosZ = 0;
+_errX = 0;
+_errY = 0;
+_errZ = 0;
+_EpX = 0;
+_EpY = 0;
+_EpZ = 0;
+_Kp = 4.5;
+_offsetX = 0;
+_offsetY = 0;
+_offsetZ = 0; 
+_r = 8;
+nearestObjects[_unit, "LandVehicle", 20];
+_k = 0;
+hint str nearestObjects[_unit, "LandVehicle", 20];
+while{alive _unit} do {
+
+_pPosX = getPos _unit select 0;
+_pPosY = getPos _unit select 1;
+_pPosZ = getPos _unit select 2;
+_tPosX = getPos _obj select 0;
+_tPosY = getPos _obj select 1;
+_tPosZ = getPos _obj select 2;
+
+_offsetX = _pPosX + _r*sin(_k + 90);
+_offsetY = _pPosY - _r*sin(_k);
+
+_errX = _Kp * (_offsetX - _tPosX);
+_errY = _Kp * (_offsetY - _tPosY);
+_errZ = (_pPosZ - _tPosZ) + 1 + 1.5*sin(_k*10);
+
+_obj setVelocity[_errX, _errY, _errZ];
+
+_k = _k + 0.003;
+
+};
+
+},[1],0,false,true,""," driver  _target == _this"];
