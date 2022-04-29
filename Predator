@@ -1,0 +1,58 @@
+removeAllWeapons this;
+removeAllItems this;
+removeAllAssignedItems this;
+removeUniform this;
+removeVest this;
+removeBackpack this;
+removeHeadgear this;
+removeGoggles this;
+this addWeapon "MAX_plasma_cannon";
+this addPrimaryWeaponItem "Max_Plasma_ammo";
+this addWeapon "max_Wristblades";
+this addHandgunItem "Max_Hit_blade";
+this forceAddUniform "predator_Uniform";
+this addVest "vest_pred";
+this addBackpack "B_AssaultPack_cbr";
+for "_i" from 1 to 20 do {this addItemToBackpack "Max_Plasma_ammo";};
+this addHeadgear "Mask_pred";
+this linkItem "ItemMap";
+this linkItem "Visor_pred";
+[this,"max_predator_face","male08eng"] call BIS_fnc_setIdentity;
+nul = [player] execVM "max_predator\scripts\initpl.sqf"; 
+player addAction["CLOAK", {nul = [player] execVM "max_predator\scripts\cloaked.sqf"},nil,0,false, true]; 
+player addAction["DECLOAK", {nul = [player] execVM "max_predator\scripts\decloaked.sqf"},nil,0,false, true]; 
+player addAction ["HIGH-JUMP", {player setVelocityModelSpace [0, speed player/3.6, 12.52622848]}];
+player addEventhandler ["HandleDamage",{ params ["_unit","_selection","_damage"];
+_damage * 0.01; }];
+player addAction["SELF-DESTRUCT", {nul = [player] execVM "max_predator\scripts\destruction.sqf"; player removeAction 3},nil,0,false, true];
+
+
+//player addEventHandler ["HandleDamage", {if(isNull(_this select 3)) then {if((_this select 5) < 0) then {damage(_this select 0)} else {(_this select 0) getHitIndex (_this select 5)}} else {_this select 2}}]; 
+//player addEventhandler ["HandleDamage",{ params ["_unit","_selection","_damage"]; 
+//_damage * 0.01; }];
+//6
+
+
+
+
+
+if (!local this) exitWith {};
+removeAllWeapons this;
+removeAllItems this;
+removeAllAssignedItems this;
+removeUniform this;
+removeVest this;
+removeBackpack this;
+removeHeadgear this;
+removeGoggles this;
+this addWeapon "MAX_plasma_cannon";
+this addPrimaryWeaponItem "Max_Plasma_ammo";
+this addWeapon "max_Wristblades";
+this addHandgunItem "Max_Hit_blade";
+this forceAddUniform "predator_Uniform";
+this addVest "vest_pred_red";
+this addItemToUniform "FirstAidKit";
+this addHeadgear "Mask_pred_red";
+this linkItem "ItemMap";
+this linkItem "Visor_pred";
+[this,"max_predator_face","novoice"] call BIS_fnc_setIdentity;
