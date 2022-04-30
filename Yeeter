@@ -12,7 +12,7 @@ if(!local this) exitWith{};
 player allowDamage false;
 player addAction ["<t color='#FF0000'>YEET</t>", {
 private _pArr = (getPos player) nearEntities ["Man", 2];
-private _Vi = 50;
+private _Vi = 200;
 private _t = time + 1.166;
 if(count _pArr > 1) then {
   for [{ _i = 0 }, { _i < count _pArr }, { _i = _i + 1 }] do {
@@ -37,7 +37,7 @@ if(count _pArr > 1) then {
 
 player addAction ["<t color='#FF0000'>PUNCH</t>", {
 private _pArr = (getPos player) nearEntities ["Man", 2];
-private _Vi = 50;
+private _Vi = 200;
 private _t = time + 0.4;
 private _t1 = time + 0.909;
 if(count _pArr > 1) then {
@@ -92,11 +92,11 @@ if(count _pArr > 1) then {
 };}, [1], 6, false, true, "", "_target == player"];
 
 
-------------------- HARD PUNCH (REQUIRES THE MOD) -----------------------
+------------------- HARD PUNCH (LOCAL, REQUIRES THE MOD) -----------------------
 
 player addAction ["<t color='#FF0000'>PUNCH</t>", {
 private _pArr = (getPos player) nearEntities ["Man", 2];
-private _Vi = 50;
+private _Vi = 200;
 private _t = time + 0.4;
 private _t1 = time + 0.909;
 if(count _pArr > 1) then {
