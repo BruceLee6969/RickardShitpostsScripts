@@ -17,7 +17,7 @@ private _t = time + 1.166;
 if(count _pArr > 1) then {
   for [{ _i = 0 }, { _i < count _pArr }, { _i = _i + 1 }] do {
     private _k = _pArr select _i;
-    if([_pArr select _i] call BIS_fnc_getName != [player] call BIS_fnc_getName && abs(player getRelDir getPos (_pArr select _i)) <= 20 || abs(player getRelDir getPos (_pArr select _i)) >= (360-20) && (_pArr select _i distance player <= 1.2)) then {	
+    if([_pArr select _i] call BIS_fnc_getName != [player] call BIS_fnc_getName && abs(player getRelDir getPos (_pArr select _i)) <= 30 || abs(player getRelDir getPos (_pArr select _i)) >= (360-30) && (_pArr select _i distance player <= 1.2)) then {	
       player switchMove "AwopPercMstpSgthWnonDnon_start";
       player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
       player playMoveNow "AwopPercMstpSgthWnonDnon_end";
