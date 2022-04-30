@@ -2,31 +2,28 @@
 if(!local this) exitWith{};
 player allowDamage false;
 player addAction ["<t color='#FF000'>PUNCH</t>", {
-
 private _pArr = (getPos player) nearEntities ["Man", 2];
-   private _Vi = 100;
+private _Vi = 100;
+private _t = diag_tickTime + 0.909;
 
 if(count _pArr > 1) then {
-  for "_i" from 0 to count(_tArr) do {
+  for "_i" from 0 to count _pArr do {
   private _k = _pArr select _i;
    if((player getRelDir (getPos _k) <= 20 || player getRelDir (getPos _k) >= (360-20)) && _pArr select "_i" != this && (_pArr select _i distance player <= 1.2)) then {
-   _i = count(_pArr);
-   
-   player switchMove " ... "; //INSERT THROW ANIMATION
-   _k switchMove " ... ";
-   
+   _i = count _pArr;
+   player switchMove "WBK_FISTS_ATTACK_1";
+   _k switchMove "STAR_WARS_FIGHT_PUSHEDAWAY";
    _k attachTo [player, [0,0,0],"righthand", true];
-   private _t = diag_tickTime + _animTime; //INSERT DURATION OF THROW ANIMATION
    waitUntil{serverTime >= _t};
    detach _k;
    _k setVelocity[_Vi*((direction player*180/pi)-getCameraViewDirection player select 0),_Vi*((direction player*180/pi)-getCameraViewDirection player select 1), _Vi*abs(((getCameraViewDirection player select 2)))];
-  
+   player switchMove "";
   };
-
 } else {
-
-player switchMove " ... "; //INSERT THROW ANIMATION
-
+player switchMove "WBK_FISTS_ATTACK_1";
+waitUntil{serverTime >= _t};
+player switchMove "";
 };};
-
 }, [1], 6, false, true, "", "_target == player"];
+
+//starWars_lightsaber_attackLeg //ROUNDHOUSE KICK
