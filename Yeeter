@@ -1,29 +1,67 @@
+------------ YEETER -------------
+REQUIREMENTS:
+
+
+INSTRUCTIONS: 
+Apply to player/playable unit in 3den or Zeus depending on multiplayer or localhost.
+Use the addActions while looking at a unit of type "man"
+
+------------ LOCAL HOST (3DEN) VARIANT -------------
 
 if(!local this) exitWith{};
 player allowDamage false;
-player addAction ["<t color='#FF000'>PUNCH</t>", {
+player addAction ["<t color='#FF0000'>YEET</t>", {
 private _pArr = (getPos player) nearEntities ["Man", 2];
-private _Vi = 100;
-private _t = time + 0.909;
-
+private _Vi = 50;
+private _t = time + 1.166;
 if(count _pArr > 1) then {
-  for [{ _i = 0 }, { _i < 2 }, { _i = _i + 1 }] do {
-  private _k = _pArr select _i;
-   if((player getRelDir (getPos _k) <= 20 || player getRelDir (getPos _k) >= (360-20)) && _pArr select "_i" != this && (_pArr select _i distance player <= 1.2)) then {
-   _i = count _pArr;
-   player switchMove "WBK_FISTS_ATTACK_1";
-   _k switchMove "STAR_WARS_FIGHT_PUSHEDAWAY";
-   _k attachTo [player, [0,0,0],"righthand", true];
-   waitUntil{time >= _t};
-   detach _k;
-   _k setVelocity[_Vi*((direction player*180/pi)-getCameraViewDirection player select 0),_Vi*((direction player*180/pi)-getCameraViewDirection player select 1), _Vi*abs(((getCameraViewDirection player select 2)))];
-   player switchMove "";
+  for [{ _i = 0 }, { _i < count _pArr }, { _i = _i + 1 }] do {
+    private _k = _pArr select _i;
+    if([_pArr select _i] call BIS_fnc_getName != [player] call BIS_fnc_getName && abs(player getRelDir getPos (_pArr select _i)) <= 20 || abs(player getRelDir getPos (_pArr select _i)) >= (360-20) && (_pArr select _i distance player <= 1.2)) then {	
+      player switchMove "AwopPercMstpSgthWnonDnon_start";
+      player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
+      player playMoveNow "AwopPercMstpSgthWnonDnon_end";
+      _k setDir ((getDir _k) - (_k getRelDir (getPos player)));
+      _k attachTo [player, [0,0,0],"righthand", true];
+      waitUntil{time >= _t};
+      detach _k;
+      _k setVelocity[_Vi*((getCameraViewDirection player select 0)),_Vi*((getCameraViewDirection player select 1)), _Vi*abs(getCameraViewDirection player select 2)];
+      player switchMove "";
+      _i = count _pArr;
+    };
   };
 } else {
-player switchMove "WBK_FISTS_ATTACK_1";
-waitUntil{time >= _t};
-player switchMove "";
-};
-}, [1], 6, false, true, "", "_target == player"];
+  player switchMove "AwopPercMstpSgthWnonDnon_start";
+  player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
+  player playMoveNow "AwopPercMstpSgthWnonDnon_end";
+};}, [1], 6, false, true, "", "_target == player"];
 
-//starWars_lightsaber_attackLeg //ROUNDHOUSE KICK
+player addAction ["<t color='#FF0000'>PUNCH</t>", {
+private _pArr = (getPos player) nearEntities ["Man", 2];
+private _Vi = 50;
+private _t = time + 0.4;
+if(count _pArr > 1) then {
+
+  for [{ _i = 0 }, { _i < count _pArr }, { _i = _i + 1 }] do {
+    private _k = _pArr select _i;
+    if([_pArr select _i] call BIS_fnc_getName != [player] call BIS_fnc_getName && abs(player getRelDir getPos (_pArr select _i)) <= 20 || abs(player getRelDir getPos (_pArr select _i)) >= (360-20) && (_pArr select _i distance player <= 1.2)) then {	
+      player switchMove "WBK_FISTS_ATTACK_1";
+      _k setDir ((getDir _k) - (_k getRelDir (getPos player)));
+      waitUntil{time >= _t};
+      detach _k;
+      _k setVelocity[_Vi*((getCameraViewDirection player select 0)),_Vi*((getCameraViewDirection player select 1)), _Vi*abs(getCameraViewDirection player select 2)];
+      player switchMove "";
+      _i = count _pArr;
+    };
+  };
+} else {
+  player switchMove "WBK_FISTS_ATTACK_1";
+  waitUntil{time >= _t};
+  player switchMove "";
+};}, [1], 6, false, true, "", "_target == player"];
+
+------------ MULTIPLAYER (ZEUS) VARIANT -------------
+
+ _k switchMove "STAR_WARS_FIGHT_PUSHEDAWAY";
+ 
+ ----------------------------------------------------
