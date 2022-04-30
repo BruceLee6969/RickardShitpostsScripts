@@ -7,7 +7,7 @@ private _Vi = 100;
 private _t = time + 0.909;
 
 if(count _pArr > 1) then {
-  for "_i" from 0 to count _pArr do {
+  for [{ _i = 0 }, { _i < 2 }, { _i = _i + 1 }] do {
   private _k = _pArr select _i;
    if((player getRelDir (getPos _k) <= 20 || player getRelDir (getPos _k) >= (360-20)) && _pArr select "_i" != this && (_pArr select _i distance player <= 1.2)) then {
    _i = count _pArr;
@@ -23,7 +23,7 @@ if(count _pArr > 1) then {
 player switchMove "WBK_FISTS_ATTACK_1";
 waitUntil{time >= _t};
 player switchMove "";
-};};
+};
 }, [1], 6, false, true, "", "_target == player"];
 
 //starWars_lightsaber_attackLeg //ROUNDHOUSE KICK
