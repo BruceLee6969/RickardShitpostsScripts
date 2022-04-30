@@ -64,14 +64,12 @@ if(count _pArr > 1) then {
 ------------------------- MULTIPLAYER (ZEUS) VARIANT ---------------------------
 
 if(!local this) exitWith{};
-_this allowDamage false;
-_this addAction ["<t color='#FF0000'>YEET</t>", {
+player addAction ["<t color='#FF0000'>YEET</t>", {
 private _pArr = (getPos player) nearEntities ["Man", 2];
-private _Vi = 200
-rw;
+private _Vi = 200;
 private _t = diag_tickTime + 1.166;
 if(count _pArr > 1) then {
-  for [{ _i = 0 }, { _i < count _pArr }, { _i = _i + 1 }] do {
+  for [{_i = 0}, {_i < count _pArr}, {_i =_i+1}] do {
     private _k = _pArr select _i;
     if([_pArr select _i] call BIS_fnc_getName != [player] call BIS_fnc_getName && abs(player getRelDir getPos (_pArr select _i)) <= 30 || abs(player getRelDir getPos (_pArr select _i)) >= (360-30) && (_pArr select _i distance player <= 1.2)) then {	
       player switchMove "AwopPercMstpSgthWnonDnon_start";
