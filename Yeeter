@@ -4,7 +4,7 @@ player allowDamage false;
 player addAction ["<t color='#FF000'>PUNCH</t>", {
 private _pArr = (getPos player) nearEntities ["Man", 2];
 private _Vi = 100;
-private _t = diag_tickTime + 0.909;
+private _t = time + 0.909;
 
 if(count _pArr > 1) then {
   for "_i" from 0 to count _pArr do {
@@ -14,14 +14,14 @@ if(count _pArr > 1) then {
    player switchMove "WBK_FISTS_ATTACK_1";
    _k switchMove "STAR_WARS_FIGHT_PUSHEDAWAY";
    _k attachTo [player, [0,0,0],"righthand", true];
-   waitUntil{serverTime >= _t};
+   waitUntil{time >= _t};
    detach _k;
    _k setVelocity[_Vi*((direction player*180/pi)-getCameraViewDirection player select 0),_Vi*((direction player*180/pi)-getCameraViewDirection player select 1), _Vi*abs(((getCameraViewDirection player select 2)))];
    player switchMove "";
   };
 } else {
 player switchMove "WBK_FISTS_ATTACK_1";
-waitUntil{serverTime >= _t};
+waitUntil{time >= _t};
 player switchMove "";
 };};
 }, [1], 6, false, true, "", "_target == player"];
