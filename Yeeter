@@ -26,7 +26,7 @@ if(count _pArr > 1) then {
       waitUntil{time >= _t};
       detach _k;
       _k setVelocity[_Vi*((getCameraViewDirection player select 0)),_Vi*((getCameraViewDirection player select 1)), _Vi*abs(getCameraViewDirection player select 2)];
-      _i = count _pArr;
+      _i = count _pArr+1;
     };
   };
 } else {
@@ -52,7 +52,7 @@ if(count _pArr > 1) then {
       _k setVelocity[_Vi*(cos(getDir player)),_Vi*(sin(getDir player)), _Vi*abs(getCameraViewDirection player select 2)];
       waitUntil{time >= _t1};
       player switchMove "";
-      _i = count _pArr;
+      _i = count _pArr+1;
     };
   };
 } else {
