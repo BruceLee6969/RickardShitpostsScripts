@@ -12,7 +12,7 @@ if(!local this) exitWith{};
 player allowDamage false;
 player addAction ["<t color='#FF0000'>YEET</t>", {
 private _pArr = (getPos player) nearEntities ["Man", 2];
-private _Vi = 200;
+private _Vi = 300;
 private _t = time + 1.166;
 if(count _pArr > 1) then {
   for [{ _i = 0 }, { _i < count _pArr }, { _i = _i + 1 }] do {
@@ -21,7 +21,7 @@ if(count _pArr > 1) then {
       player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
       player playMoveNow "AwopPercMstpSgthWnonDnon_end";
       (_pArr select _i) setDir ((getDir (_pArr select _i)) - ((_pArr select _i) getRelDir (getPos player)));
-      (_pArr select _i) attachTo [player, [0,0,0],"righthand", true];
+      (_pArr select _i) attachTo [player, [0,0,-1],"righthand", true];
       waitUntil{time >= _t};
       detach (_pArr select _i);
       (_pArr select _i) setVelocity[_Vi*((getCameraViewDirection player select 0)),_Vi*((getCameraViewDirection player select 1)), _Vi*(getCameraViewDirection player select 2)];
