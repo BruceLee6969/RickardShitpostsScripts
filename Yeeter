@@ -20,6 +20,7 @@ if(count _pArr > 1) then {
       player switchMove "AwopPercMstpSgthWnonDnon_start";
       player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
       player playMoveNow "AwopPercMstpSgthWnonDnon_end";
+      player disableCollisionWith (_pArr select _i);
       (_pArr select _i) setDir ((getDir (_pArr select _i)) - ((_pArr select _i) getRelDir (getPos player)));
       (_pArr select _i) attachTo [player, [0,0,-1],"righthand", true];
       waitUntil{time >= _t};
