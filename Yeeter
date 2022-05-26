@@ -4,7 +4,7 @@ https://steamcommunity.com/workshop/filedetails/?id=2291129343
 
 INSTRUCTIONS: 
 Apply to player/playable unit in 3den or Zeus depending on multiplayer or localhost.
-Use the addActions while looking at a unit of type "man"
+Use the addActions while looking at a unit of type "man" to grab the unit and throw wherever you look.
 
 ------------ LOCAL HOST (3DEN) VARIANT -------------
 
