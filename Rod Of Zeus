@@ -1,1 +1,27 @@
+---------------- ROD OF ZEUS -----------------
 
+DESCRIPTION:
+addAction that allows a unit to throw a rod that will incinerate any nearby objects as it flies, with lightning bolts spawning on them.
+
+----------------- HOW TO USE ------------------
+
+
+
+if(!local this) exitWith{};
+player allowDamage false;
+player addAction ["<t color='#FF0000'>YEET ROD OF GOD</t>", {
+private _pArr = (getPos player) nearEntities ["Man", 2];
+private _Vi = 350;
+private _t = time + 1.166;
+
+ player switchMove "AwopPercMstpSgthWnonDnon_start";
+ player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
+ player playMoveNow "AwopPercMstpSgthWnonDnon_end";
+  
+ waitUntil{time >= _t};
+ detach (_pArr select _i);
+ _rod setVelocity[_Vi*((getCameraViewDirection player select 0)),_Vi*((getCameraViewDirection player select 1)), _Vi*(getCameraViewDirection player select 2)];
+  
+ //CALCULATE TIME OF TRAVEL, PUT INTO A WHILE LOOP WITH CONDITION IF ToT >= TIME PASSED SINCE YEET, REMOVE ROD 
+  
+}, [1], 6, false, true, "", "_target == player"];
