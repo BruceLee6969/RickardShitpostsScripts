@@ -22,6 +22,7 @@ private _t = time + 1.166;
  detach (_pArr select _i);
  _rod setVelocity[_Vi*((getCameraViewDirection player select 0)),_Vi*((getCameraViewDirection player select 1)), _Vi*(getCameraViewDirection player select 2)];
   
- //CALCULATE TIME OF TRAVEL, PUT INTO A WHILE LOOP WITH CONDITION IF ToT >= TIME PASSED SINCE YEET, REMOVE ROD 
-  
+ //CALCULATE TIME OF TRAVEL, PUT INTO A WHILE LOOP WITH CONDITION IF ToT <= TIME SINCE YEET, REMOVE ROD 
+ //WHILE ToT >= TIME SINCE YEET, KEEP UPDATING nearEntities AND CHECK FOR NEARBY UNITS, ELSE DO NOTHING
+ 
 }, [1], 6, false, true, "", "_target == player"];
