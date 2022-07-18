@@ -1,0 +1,17 @@
+INSTRUCTIONS:
+Execute in init on playable/player unit.
+
+NOTE(S):
+yes
+
+---- MULTIPLAYER/SINGLEPLAYER ----
+
+if (!local player) exitWith {};
+player addAction ["<t color='#FF0000'>T-POSE</t>",{
+	player switchMove "TransAnimBase_noIK";
+},[1],0,false,true,"","_target == player"];
+
+if (!local player) exitWith {};
+player addAction ["<t color='#FF0000'>RESET ANIM</t>",{
+	player switchMove "";
+},[1],0,false,true,"","_target == player"];
