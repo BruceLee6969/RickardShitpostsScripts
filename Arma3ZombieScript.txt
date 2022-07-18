@@ -1,6 +1,7 @@
 ------------ ZOMBIE SCRIPT (WBK ANIMATIONS)--------------
-REQUIRED MOD(S): 
+REQUIRES WBK ANIMATIONS:
 https://steamcommunity.com/workshop/filedetails/?id=2291129343
+
 HOW TO USE: Apply to player unit through initbox in 3den or Zeus, multiplayer version will be found further down
 
 ------------ (LOCAL HOST VERSION) --------------
