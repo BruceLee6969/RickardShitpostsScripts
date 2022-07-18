@@ -1,0 +1,30 @@
+INSTRUCTIONS:
+Requires WBK Animations.
+Execute on playable/player unit.
+Be within 1.1 meters of a target and use the PUNCH addAction.
+
+---- SINGLEPLAYER USE ONLY ----
+
+player addAction ["<t color='#FF0000'>PUNCH</t>", {
+private _pArr = (getPos player) nearEntities ["Man", 2];
+private _Vi = 5;
+private _t = time + 0.4;
+private _t1 = time + 0.909;
+if(count _pArr > 1) then {
+  for [{ _i = 0 }, { _i < count _pArr }, { _i = _i + 1 }] do {
+    if([_pArr select _i] call BIS_fnc_getName != [player] call BIS_fnc_getName && abs(player getRelDir getPos (_pArr select _i)) <= 20 || abs(player getRelDir getPos (_pArr select _i)) >= (360-20) && (_pArr select _i distance player <= 1.1)) then {	
+      player switchMove "WBK_FISTS_ATTACK_1";
+      (_pArr select _i) setDir ((getDir (_pArr select _i)) - ((_pArr select _i) getRelDir (getPos player)));
+      waitUntil{time >= _t};
+      detach (_pArr select _i);
+      (_pArr select _i) setVelocity[_Vi*(sin(getDir player)),_Vi*(cos(getDir player)), _Vi*(getCameraViewDirection player select 2)];
+      waitUntil{time >= _t1};
+      player switchMove "";
+      _i = count _pArr+1;
+    };
+  };
+} else {
+  player switchMove "WBK_FISTS_ATTACK_1";
+  waitUntil{time >= _t};
+  player switchMove "";
+};}, [1], 6, false, true, "", "_target == player"];
