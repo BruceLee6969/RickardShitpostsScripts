@@ -1,0 +1,53 @@
+INSTRUCTIONS:
+Put in init of playable/player unit.
+
+NOTE(S):
+become the invincible
+
+---- MULTIPLAYER/SINGLEPLAYER (Zeus/3den) ----
+
+if (!local this) exitWith {};
+private _helmet = "Land_FlowerPot_01_F" createVehicle position _this;
+private _upchest = "Land_FlowerPot_01_F" createVehicle position _this;
+private _lowchest = "Land_FlowerPot_01_F" createVehicle position _this;
+private _leftlegup1 = "Land_FlowerPot_01_F" createVehicle position _this;
+private _leftlegup2 = "Land_FlowerPot_01_F" createVehicle position _this;
+private _leftlowleg1 = "Land_FlowerPot_01_F" createVehicle position _this;
+private _leftlowleg2 = "Land_FlowerPot_01_F" createVehicle position _this;
+private _rightlegup1 = "Land_FlowerPot_01_F" createVehicle position _this;
+private _rightlegup2 = "Land_FlowerPot_01_F" createVehicle position _this;
+private _rightlowleg1 = "Land_FlowerPot_01_F" createVehicle position _this;
+private _rightlowleg2 = "Land_FlowerPot_01_F" createVehicle position _this;
+_helmet attachTo [_this, [-0.07,-0.1,0.09],"head", true];
+_upchest attachTo [_this, [-0.011,-0.02,-0.063],"spine3", true];
+_lowchest attachTo [_this, [-0.02,0.018,-0.06],"Pelvis", true];
+_leftlegup1 attachTo [_this, [0.01,-0.05,-0.05],"leftupleg", true];
+_leftlegup2 attachTo [_this, [-0.01,0,-0.32],"leftupleg", true];
+_leftlowleg1 attachTo [_this, [0,-0.09,-0.1],"leftleg", true];
+_leftlowleg2 attachTo [_this, [-0.02,-0.09,-0.34],"leftleg", true];
+_rightlegup1 attachTo [_this, [-0.01,-0.05,-0.05],"rightupleg", true];
+_rightlegup2 attachTo [_this, [0.01,0,-0.32],"rightupleg", true];
+_rightlowleg1 attachTo [_this, [-0.01,-0.09,-0.1],"rightleg", true];
+_rightlowleg2 attachTo [_this, [0.01,-0.08,-0.34],"rightleg", true];
+_helmet setVectorDirAndUp [[1,0,0],[0,-0.1,-1]];
+_upchest setVectorDirAndUp [[1,0,0],[0,0,-1]];
+_lowchest setVectorDirAndUp [[1,0,0],[0,0,1]];
+_leftlegup1 setVectorDirAndUp [[1,0.1,-0.1],[0,0.1,-1]];
+_leftlegup2 setVectorDirAndUp [[1,0,-0.05],[0,-0.05,1]];
+_leftlowleg1 setVectorDirAndUp [[1,0,-0.08],[0,-0.1,-1]];
+_leftlowleg2 setVectorDirAndUp [[1,0,-0.08],[0,0.1,1]]; 
+_rightlegup1 setVectorDirAndUp [[1,0.1,0.1],[0,0.1,-1]];
+_rightlegup2 setVectorDirAndUp [[1,0,0.05],[0,-0.05,1]];
+_rightlowleg1 setVectorDirAndUp [[1,0,0.05],[0,-0.1,-1]];
+_rightlowleg2 setVectorDirAndUp [[1,0,0.05],[0,0.05,1]];  
+_helmet setObjectScale 1.36;
+_upchest setObjectScale 2.05;
+_lowchest setObjectScale 2.0;
+_leftlegup1 setObjectScale 1.2;
+_leftlegup2 setObjectScale 1.2;
+_leftlowleg1 setObjectScale 1.2;
+_leftlowleg2 setObjectScale 1.2;
+_rightlegup1 setObjectScale 1.2;
+_rightlegup2 setObjectScale 1.2;
+_rightlowleg1 setObjectScale 1.2;
+_rightlowleg2 setObjectScale 1.2;
