@@ -1,0 +1,13 @@
+INSTRUCTIONS:
+Execute in init on playable/player unit in Zeus or 3den.
+
+---- SINGLEPLAYER/MULTIPLAYER USE ----
+
+if(!local this) exitWith{};
+player addAction ["<t color='#FFFF00'>TRACERS/RESET</t>",{
+[player] spawn BIS_fnc_traceBullets;
+},[1],0,false,true,"","_target == player"];
+
+player addAction ["<t color='#FFFF00'>DISABLE TRACERS</t>",{
+[player,0] spawn BIS_fnc_traceBullets;
+},[1],0,false,true,"","_target == player"];
