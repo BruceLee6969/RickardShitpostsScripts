@@ -1,0 +1,44 @@
+INSTRUCTIONS:
+Execute in init on playable/player unit.
+Use addAction to yeet ball.
+Ball will delete itself after 10 seconds.
+
+---- SINGLEPLAYER USE ONLY (Zeus/3den)----
+
+if(!local this) exitWith{};
+player allowDamage false;
+player addAction ["<t color='#FF0000'>YEET BALL</t>", {
+player switchMove "AwopPercMstpSgthWnonDnon_start";
+player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
+player playMoveNow "AwopPercMstpSgthWnonDnon_end";
+private _Vi = 50;
+private _t = time + 1.166/(getAnimSpeedCoef player);
+_c = "Land_Rugbyball_01_F" createVehicle position player;
+_c attachTo [player, [0,0,0], "righthand", true];
+_c setVectorDirAndUp [[1,5,0],[0,0,1]];
+waitUntil{time >= _t};
+detach _c;
+_c setVelocity[_Vi*((getCameraViewDirection player select 0)),_Vi*((getCameraViewDirection player select 1)), _Vi*(getCameraViewDirection player select 2)];
+waitUntil{time >= _t+10};
+deleteVehicle _c;
+}, [1], 6, false, true, "", "_target == player"];
+
+---- MULTIPLAYER USE ONLY (ZEUS) ----
+
+if(!local this) exitWith{};
+player allowDamage false;
+player addAction ["<t color='#FF0000'>YEET BALL</t>", {
+player switchMove "AwopPercMstpSgthWnonDnon_start";
+player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
+player playMoveNow "AwopPercMstpSgthWnonDnon_end";
+private _Vi = 50;
+private _t = diag_tickTime + 1.166/(getAnimSpeedCoef player);
+_c = "Land_Rugbyball_01_F" createVehicle position player;
+_c attachTo [player, [0,0,0], "righthand", true];
+_c setVectorDirAndUp [[1,5,0],[0,0,1]];
+waitUntil{diag_tickTime >= _t};
+detach _c;
+_c setVelocity[_Vi*((getCameraViewDirection player select 0)),_Vi*((getCameraViewDirection player select 1)), _Vi*(getCameraViewDirection player select 2)];
+waitUntil{diag_tickTime >= _t+10};
+deleteVehicle _c;
+}, [1], 6, false, true, "", "_target == player"];
