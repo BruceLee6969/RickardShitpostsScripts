@@ -1,12 +1,14 @@
+INSTRUCTIONS:
+Execute in init on a playable/player unit.
+There has to be a landbased vehicle within 20 meters of said unit.
+
+---- SINGLEPLAYER USE ONLY ----
+
 this allowDamage false;
-
 this addAction ["<t color='#FFFF00'>CALL OBJECT</t>",{
-
 _obj = obj;
 _unit = player;
-
 [_obj, _unit] remoteExecCall ["disableCollisionWith", 0, _unit];
-
 _pPosX = 0;
 _pPosY = 0;
 _pPosZ = 0;
@@ -31,25 +33,17 @@ nearestObjects[_unit, "LandVehicle", 20];
 _k = 0;
 hint str nearestObjects[_unit, "LandVehicle", 20];
 while{alive _unit} do {
-
 _pPosX = getPos _unit select 0;
 _pPosY = getPos _unit select 1;
 _pPosZ = getPos _unit select 2;
 _tPosX = getPos _obj select 0;
 _tPosY = getPos _obj select 1;
 _tPosZ = getPos _obj select 2;
-
 _offsetX = _pPosX + _r*sin(_k + 90);
 _offsetY = _pPosY - _r*sin(_k);
-
 _errX = _Kp * (_offsetX - _tPosX);
 _errY = _Kp * (_offsetY - _tPosY);
 _errZ = (_pPosZ - _tPosZ) + 1 + 1.5*sin(_k*10);
-
 _obj setVelocity[_errX, _errY, _errZ];
-
 _k = _k + 0.003;
-
-};
-
-},[1],0,false,true,""," driver  _target == _this"];
+};},[1],0,false,true,""," driver  _target == _this"];
