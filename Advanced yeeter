@@ -1,0 +1,94 @@
+INSTRUCTIONS:
+Execute in init on playable/player unit.
+
+NOTE(S):
+It functions by receiving the position on terrain (PositionAGL) given by the center of player's screen.
+Then solves for distance to target and altitude to solve for a suitable low velocity and from there 
+calculates an initial angle of launch.
+
+If the unit is looking at a non-terrain position, the initial angle of launch is set to 1 deg and a velocity of 200 m/s (test state).
+Object deletes itself after 30 seconds.
+
+---- MULTIPLAYER ---- 
+
+if (!local this) exitWith {}; 
+player addAction ["<t color='#FF0000'>YEET BROOM</t>",{ 
+	disableUserInput true;
+	private _rod = "Broom_01_yellow_F" createVehicle position player;
+	private _Vi = 10;
+	private _tm = diag_tickTime+1.166;
+	private _pDir = getDir player;
+	private _g = 9.80665;
+	private _pX = getPos player select 0;
+	private _pY = getPos player select 1;
+	private _tX = screenToWorld[0.5,0.5] select 0;
+	private _tY = screenToWorld[0.5,0.5] select 1;
+	private _rx = sqrt((_pX-_tX)^2+(_pY-_tY)^2);
+	private _yv = (getTerrainHeightASL [_tX, _tY])-((getPosASL player select 2)+2.1);
+	private _ang = 0;
+	_ang = atan(((_Vi^2)-sqrt((_Vi^4)-_g*(_g*(_rx^2)+2*_yv*(_Vi^2))))/(_g*_rx));
+	while {typeName _ang != "SCALAR"} do {
+		if (_Vi >= 2500) exitWith { 
+			_Vi = 200;
+			_ang = 1;
+		};
+		_Vi = _Vi + 50;
+		_ang = atan(((_Vi^2)-sqrt((_Vi^4)-_g*(_g*(_rx^2)+2*_yv*(_Vi^2))))/(_g*_rx));
+	};
+	_rod attachTo [player, [0.25,0.03,-0.08],"rightforearm", true];
+	_rod setVectorDirAndUp [[-8,4,50],[5,0,1]];
+	_rod disableCollisionWith player;
+	player switchMove "AwopPercMstpSgthWnonDnon_start";
+	player playMove "AwopPercMstpSgthWnonDnon_throw";
+    waitUntil{diag_tickTime > _tm;};
+	player playMove "AwopPercMstpSgthWnonDnon_end";
+	detach _rod;
+	_rod setVelocity[(_Vi*cos(_ang))*sin(_pDir),(_Vi*cos(_ang))*cos(_pDir),_Vi*sin(_ang)];
+	disableUserInput false;
+	waitUntil{diag_tickTime > _tm+30;};
+	deleteVehicle _rod;
+},[1],0,false,true,"","_target == player"];
+
+
+---- SINGLEPLAYER USE ----
+
+
+if (!local this) exitWith {}; 
+player addAction ["<t color='#FF0000'>YEET BROOM</t>",{ 
+	disableUserInput true;
+	private _rod = "Broom_01_yellow_F" createVehicle position player;
+	private _Vi = 10;
+	private _tm = diag_tickTime+1.166;
+	private _pDir = getDir player;
+	private _g = 9.80665;
+	private _pX = getPos player select 0;
+	private _pY = getPos player select 1;
+	private _tX = screenToWorld[0.5,0.5] select 0;
+	private _tY = screenToWorld[0.5,0.5] select 1;
+	private _rx = sqrt((_pX-_tX)^2+(_pY-_tY)^2);
+	private _yv = (getTerrainHeightASL [_tX, _tY])-((getPosASL player select 2)+2.1);
+	private _ang = 0;
+	_ang = atan(((_Vi^2)-sqrt((_Vi^4)-_g*(_g*(_rx^2)+2*_yv*(_Vi^2))))/(_g*_rx));
+	while {typeName _ang != "SCALAR"} do {
+		if (_Vi >= 2500) exitWith { 
+			_Vi = 200;
+			_ang = 1;
+		};
+		_Vi = _Vi + 50;
+		_ang = atan(((_Vi^2)-sqrt((_Vi^4)-_g*(_g*(_rx^2)+2*_yv*(_Vi^2))))/(_g*_rx));
+	};
+	_rod attachTo [player, [0.25,0.03,-0.08],"rightforearm", true];
+	_rod setVectorDirAndUp [[-8,4,50],[5,0,1]];
+	_rod disableCollisionWith player;
+	player switchMove "AwopPercMstpSgthWnonDnon_start";
+	player playMove "AwopPercMstpSgthWnonDnon_throw";
+    waitUntil{time > _tm;};
+	player playMove "AwopPercMstpSgthWnonDnon_end";
+	detach _rod;
+	_rod setVelocity[(_Vi*cos(_ang))*sin(_pDir),(_Vi*cos(_ang))*cos(_pDir),_Vi*sin(_ang)];
+	disableUserInput false;
+	waitUntil{time > _tm+30;};
+	deleteVehicle _rod;
+},[1],0,false,true,"","_target == player"];
+
+
