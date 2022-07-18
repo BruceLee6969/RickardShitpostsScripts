@@ -1,3 +1,10 @@
+INSTRUCTIONS:
+Execute in init on playable/player unit.
+
+NOTE(S):
+this shit is unreliable.
+gliding property of the GBU causes unpredictable flightpaths.
+throw an object just affected by gravity.
 
 ---- SINGLEPLAYER USE ONLY ----
 
@@ -10,7 +17,7 @@ _b disableCollisionWith player;
 player switchMove "AwopPercMstpSgthWnonDnon_start";
 player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
 player playMoveNow "AwopPercMstpSgthWnonDnon_end";
-private _Vi = 300;
+private _Vi = 1000;
 private _t = time + 1.166/(getAnimSpeedCoef player);
 _b attachTo [player, [0,0,0], "righthand", true];
 _b setVectorDirAndUp [[-1.2,-1,-9],[-0.45,1,1]];
@@ -25,3 +32,32 @@ waitUntil{time >= _t+10};
 deleteVehicle _b;
 deleteVehicle _em;
 };}, [1], 6, false, true, "", "_target == player"];
+
+---- MULTIPLAYER USE ONLY ----
+
+if(!local this) exitWith{};
+player allowDamage false;
+player addAction ["<t color='#FF0000'>YEET GBU</t>", {
+0 = player spawn {
+private _b = "Bomb_03_F" createVehicle position player;
+_b disableCollisionWith player;
+player switchMove "AwopPercMstpSgthWnonDnon_start";
+player playMoveNow "AwopPercMstpSgthWnonDnon_throw";
+player playMoveNow "AwopPercMstpSgthWnonDnon_end";
+private _Vi = 1000;
+private _t = time + 1.166/(getAnimSpeedCoef player);
+_b attachTo [player, [0,0,0], "righthand", true];
+_b setVectorDirAndUp [[-1.2,-1,-9],[-0.45,1,1]];
+waitUntil{diag_tickTime >= _t};
+detach _b;
+_b setVelocity[_Vi*((getCameraViewDirection player select 0)),_Vi*((getCameraViewDirection player select 1)), _Vi*(getCameraViewDirection player select 2)];
+private _em = "#particlesource" createVehicleLocal getPos _b;
+_em setParticleClass "ObjectDestructionFire1Tiny";
+_em setParticleFire [0,0,0];
+_em attachTo [_b,[0,0,0]];
+waitUntil{diag_tickTime >= _t+10};
+deleteVehicle _b;
+deleteVehicle _em;
+};}, [1], 6, false, true, "", "_target == player"];
+
+
