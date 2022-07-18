@@ -1,0 +1,16 @@
+INSTRUCTIONS:
+Put in init of playable/player unit.
+
+NOTE(S):
+hats
+
+------ MULTIPLAYER/SINGLEPLAYER (ALL OF THEM) ------
+
+---- DEER SKULL HAT WITH CONE ----
+if (!local this) exitWith {};
+private _skull = "Land_DeerSkeleton_skull_01_F" createVehicle position _this;
+private _cone = "RoadCone_F" createVehicle position _this;
+_skull attachTo [_this, [0.048,-0.21,0.55],"head", true];
+_cone attachTo [_this, [-0.055,-0.1,0.51],"head", true];
+_skull setVectorDirAndUp [[-0.43,-0.8,0.5],[1,-0.2,1.2]];
+_skull setObjectScale 1.1;
