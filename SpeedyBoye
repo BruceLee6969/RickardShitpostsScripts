@@ -49,7 +49,7 @@ player allowDamage false;
 
 
 ----- EXPERIMENTAL 2 ----- 
-player addAction ["<t color='#FFFF00'>GROUND POUND</t>",{ 
+player addAction ["<t color='#FFFF00'>GROUND SLAM</t>",{ 
 _k = speed player/3.6;
 _tempSpeed = speed player/3.6;
 
