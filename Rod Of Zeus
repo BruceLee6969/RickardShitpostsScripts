@@ -1,10 +1,13 @@
+INSTRUCTIONS:
+Execute on init on playable/player unit.
+
+NOTE(S):
+EXPERIMENTAL
+
 ---------------- ROD OF ZEUS -----------------
 
 DESCRIPTION:
 addAction that allows a unit to throw a rod that will incinerate any nearby objects as it flies, with lightning bolts spawning on them.
-
------------------ HOW TO USE ------------------
-
 
 
 if(!local this) exitWith{};
